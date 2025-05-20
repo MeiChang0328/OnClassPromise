@@ -6,6 +6,23 @@
 <p id="demo">Fetch a file to change this text.</p>
 
 <script>
+    //一個非同步 function fetchData傳入file要使用async await不要用then
+    //fetchData(file)是非同步函數，使用fetch()方法來獲取指定file取得資料
+    //使用await等待fetch()的結果，然後使用text()方法將file其轉換為文字格式
+    //將demo元素的html取代為文字內容
+    //呼叫這個function時傳入fetch_api.html這個檔案
+    async function fetchData(file) {
+        let x = await fetch(file);
+        let y = await x.text();
+        document.getElementById("demo").innerHTML = y;
+    }
+    fetchData("fetch_api.html");
+
+    //使用一個非同步函式名稱為fetchData，不使用then()方法
+    //使用fataData()函式中使用fetch()方法來獲取指定的file取得資料
+    //使用await等待fetch()的結果，然後使用text()方法將file其轉換為文字格式
+    //將demo元素的html取代為文字內容
+    //呼叫這個function時傳入fetch_callback.html這個檔案
 
 
 

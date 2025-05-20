@@ -7,6 +7,40 @@
 <p id="demo"></p>
 
 <script>
+    //使用一個非同步函式名稱為getHTML，傳入callback參數
+    //非同步函式使用async await,不使用then()方法
+    //非同步函式會fetch()一個html檔案'myCar.html'
+    //使用await等待fetch()的結果，然後使用text()方法將file其轉換為文字格式
+    //將html檔案的內容傳入callback函式
+
+    //設計替換html檔案文字內容的function
+    //這個functionc會接收一個參數data
+    //將data的內容放置到id為'demo'的html元素中
+    //這個function會在getHTML()函式中被呼叫
+    function myDisplay(data) {
+        document.getElementById("demo").innerHTML = data;
+    }
+
+    async function getHTML(callback) {
+        let response = await fetch("mycar.html");
+        let data = await response.text();
+        callback(data)
+    }
+    getHTML(myDisplay)
+
+
+    //使用一個非同步函式名稱為getHTML，不使用then()方法
+    //getHTML()函式中使用await fetch()方式取得"mycar.html"檔案
+    //使用await等待fetch()的結果，然後使用text()方法將"mycar.html"檔案轉換為文字格式
+    //將文字的內容傳入callback函式
+
+    //設計替換html檔案文字內容的function
+    //這個functionc會接收一個參數data
+    //將data的內容放置到id為'demo'的html元素中
+    //這個function會在getHTML()函式中被呼叫
+
+    //呼叫getHTML()函式時傳入myDisplay這個function
+
 
 
 
